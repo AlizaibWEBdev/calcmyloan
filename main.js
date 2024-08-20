@@ -91,31 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    document.getElementById('export-pdf').addEventListener('click', function() {
-        const doc = new jsPDF();
-        doc.text('Loan Amortization Schedule', 10, 10);
-        
-        const rows = [];
-        const scheduleRows = scheduleTable.rows;
-        
-        for (let i = 0; i < scheduleRows.length; i++) {
-            const row = scheduleRows[i].cells;
-            rows.push([
-                row[0].textContent,
-                row[1].textContent,
-                row[2].textContent,
-                row[3].textContent,
-                row[4].textContent
-            ]);
-        }
-        
-        doc.autoTable({
-            head: [['Payment #', 'Payment', 'Principal', 'Interest', 'Balance']],
-            body: rows
-        });
-        
-        doc.save('amortization-schedule.pdf');
-    });
+  
 
     document.getElementById('print-schedule').addEventListener('click', function() {
         window.print();
